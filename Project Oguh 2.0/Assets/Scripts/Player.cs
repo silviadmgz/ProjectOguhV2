@@ -19,8 +19,8 @@ public class Player : MonoBehaviour
     {
         if (canMove)
         {
-            // BaseSpeedPlayer();
-            // PlayerControls();
+            BaseSpeedPlayer();
+            PlayerControls();
         }
         
     }

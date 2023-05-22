@@ -15,7 +15,7 @@ public class Camera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // CameraMovement();
+        CameraMovement();
     }
 
     public void CameraMovement()
