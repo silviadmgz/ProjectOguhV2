@@ -7,18 +7,18 @@ public class Player : MonoBehaviour
     [SerializeField] float baseSpeed = 4f;
     [SerializeField] float boostSpeed = 8f;
     bool canMove = true;
+    Camera cameraScript;
 
-    // Start is called before the first frame update
-    void Start()
+    void Start() 
     {
-
+        cameraScript = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (canMove)
         {
+            cameraScript.CameraMovement();
             BaseSpeedPlayer();
             PlayerControls();
         }
@@ -49,6 +49,11 @@ public class Player : MonoBehaviour
         {
             transform.Translate(-boostSpeed * Time.deltaTime, 0, 0);
         }
+    }
+
+    public void PlaneHasCrashed()
+    {
+        canMove = false;
     }
 
 }

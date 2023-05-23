@@ -4,13 +4,22 @@ using UnityEngine;
 
 public class CrashDetector : MonoBehaviour
 {
-    bool hasCrashed;
+    [SerializeField] ParticleSystem crashExplosion;
+    
+    void OnCollisionEnter2D(Collision2D other) 
+    {
+        gameObject.GetComponent<Player>().PlaneHasCrashed();
+        crashExplosion.Play();
+        Debug.Log("Crashed with ground");
+    }
 
-    void OnTriggerEnter2D(Collider2D other) 
+    void OnTriggerExit2D(Collider2D other) 
     {
         if (other.tag == "MainCamera")
         {
-            hasCrashed = true;
+            
+            gameObject.GetComponent<Player>().PlaneHasCrashed();crashExplosion.Play();
+            Debug.Log("Went out of the camera");
         }
     }
 }
