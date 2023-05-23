@@ -8,7 +8,7 @@ public class Camera : MonoBehaviour
 
     void Update()
     {
-
+        
     }
 
     public void CameraMovement()
