@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CrashDetector : MonoBehaviour
 {
     [SerializeField] ParticleSystem crashExplosion;
+    [SerializeField] AudioClip crashSFX;
+    [SerializeField] float loadDelay = 4f;
     
     void OnCollisionEnter2D(Collision2D other) 
     {
-        gameObject.GetComponent<Player>().PlaneHasCrashed();
-        crashExplosion.Play();
+        PlaneHasCrashed();
         Debug.Log("Crashed with ground");
     }
 
@@ -17,9 +19,21 @@ public class CrashDetector : MonoBehaviour
     {
         if (other.tag == "MainCamera")
         {
-            
-            gameObject.GetComponent<Player>().PlaneHasCrashed();crashExplosion.Play();
+            PlaneHasCrashed();
             Debug.Log("Went out of the camera");
         }
+    }
+
+    public void PlaneHasCrashed()
+    {
+        gameObject.GetComponent<Player>().DisableControllers();
+        crashExplosion.Play();
+        GetComponent<AudioSource>().PlayOneShot(crashSFX);
+        Invoke("ReloadScene", loadDelay);
+    }
+
+    void ReloadScene()
+    {
+        SceneManager.LoadScene(0);
     }
 }

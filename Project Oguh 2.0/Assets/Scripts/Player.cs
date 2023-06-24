@@ -22,7 +22,6 @@ public class Player : MonoBehaviour
             BaseSpeedPlayer();
             PlayerControls();
         }
-        
     }
 
     public void BaseSpeedPlayer()
@@ -51,7 +50,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void PlaneHasCrashed()
+    public void DisableControllers()
     {
         canMove = false;
     }
