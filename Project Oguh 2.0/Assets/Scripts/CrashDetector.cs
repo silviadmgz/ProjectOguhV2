@@ -24,7 +24,7 @@ public class CrashDetector : MonoBehaviour
         }
     }
 
-    public void PlaneHasCrashed()
+    void PlaneHasCrashed()
     {
         gameObject.GetComponent<Player>().DisableControllers();
         crashExplosion.Play();
