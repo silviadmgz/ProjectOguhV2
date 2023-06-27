@@ -42,3 +42,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Plane main body
+    uniqueID: 1688933949
+    locked: 0
+  - name: Plane parts
+    uniqueID: 1261031327
+    locked: 0
