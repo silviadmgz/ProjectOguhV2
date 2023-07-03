@@ -31,10 +31,14 @@ public class CrashDetector : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other) 
     {
+        if(crashFunctionCalled)
+        {
+            return;
+        }
+
         if (other.tag == "MainCamera")
         {
             PlaneHasCrashed();
-            crashFunctionCalled = true;
             Debug.Log("Went out of the camera");
         }
     }
@@ -44,6 +48,7 @@ public class CrashDetector : MonoBehaviour
         gameObject.GetComponent<Player>().DisableControllers();
         crashExplosion.Play();
         GetComponent<AudioSource>().PlayOneShot(crashSFX);
+        crashFunctionCalled = true;
 
         planeAnimator.SetTrigger("planeCrashed");
         Invoke("ReloadScene", loadDelay);
