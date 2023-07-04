@@ -10,12 +10,14 @@ public class CrashDetector : MonoBehaviour
     [SerializeField] float loadDelay = 4f;
 
     Animator planeAnimator;
+    Player playerScript;
 
     bool crashFunctionCalled = false;
 
     void Start() 
     {
-        planeAnimator = GetComponent<Animator>();   
+        planeAnimator = GetComponent<Animator>();
+        playerScript = GetComponent<Player>();
     }
     
     void OnCollisionEnter2D(Collision2D other) 
@@ -45,7 +47,7 @@ public class CrashDetector : MonoBehaviour
 
     void PlaneHasCrashed()
     {
-        gameObject.GetComponent<Player>().DisableControllers();
+        playerScript.DisableControllers();
         crashExplosion.Play();
         GetComponent<AudioSource>().PlayOneShot(crashSFX);
         crashFunctionCalled = true;

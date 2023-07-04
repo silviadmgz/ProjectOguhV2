@@ -7,11 +7,11 @@ public class Player : MonoBehaviour
     [SerializeField] float baseSpeed = 4f;
     [SerializeField] float boostSpeed = 8f;
     bool canMove = true;
-    Camera cameraScript;
+    CameraScript cameraScript;
 
     void Start() 
     {
-        cameraScript = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        cameraScript = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraScript>();
     }
 
     void Update()
@@ -54,5 +54,4 @@ public class Player : MonoBehaviour
     {
         canMove = false;
     }
-
 }
