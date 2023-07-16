@@ -28,7 +28,6 @@ public class CrashDetector : MonoBehaviour
         }
 
         PlaneHasCrashed();
-        Debug.Log("Crashed with ground");
     }
 
     void OnTriggerExit2D(Collider2D other) 
@@ -41,7 +40,6 @@ public class CrashDetector : MonoBehaviour
         if (other.tag == "MainCamera")
         {
             PlaneHasCrashed();
-            Debug.Log("Went out of the camera");
         }
     }
 
