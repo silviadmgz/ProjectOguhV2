@@ -9,6 +9,7 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI dialogueText;
     public Image avatar;
+    Player playerScript;
     
     public Animator animator;
 
@@ -17,10 +18,12 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         messages = new Queue<string>();
+        playerScript = FindObjectOfType<Player>();
     }
 
     public void StartDialogue(Dialogue dialogue)
     {
+        playerScript.UpdateControllers();
         animator.SetBool("dialogueBoxIsOpen", true);
         
         nameText.text = dialogue.name;
@@ -60,6 +63,7 @@ public class DialogueManager : MonoBehaviour
 
     void EndDialogue()
     {
+        playerScript.UpdateControllers();
         animator.SetBool("dialogueBoxIsOpen", false);
     }
 }
