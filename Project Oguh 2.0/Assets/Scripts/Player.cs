@@ -50,8 +50,8 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void DisableControllers()
+    public void UpdateControllers()
     {
-        canMove = false;
+        canMove = !canMove;
     }
 }
