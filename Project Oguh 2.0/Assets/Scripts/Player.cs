@@ -32,26 +32,16 @@ public class Player : MonoBehaviour
     void PlayerControls()
     {             
         //up and down
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            transform.Translate(0, boostSpeed * Time.deltaTime, 0);
-        } else if (Input.GetKey(KeyCode.DownArrow))
-        {
-            transform.Translate(0, -boostSpeed * Time.deltaTime, 0);
-        }
+        float yMovement = Input.GetAxis("Vertical") * boostSpeed * Time.deltaTime;
+        transform.Translate(new Vector2(0, yMovement));
 
         //right and left
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            transform.Translate(boostSpeed * Time.deltaTime, 0, 0);
-        } else if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            transform.Translate(-boostSpeed * Time.deltaTime, 0, 0);
-        }
+        float xMovement = Input.GetAxis("Horizontal") * boostSpeed * Time.deltaTime;
+        transform.Translate(new Vector2(xMovement, 0));
     }
 
-    public void DisableControllers()
+    public void UpdateControllers()
     {
-        canMove = false;
+        canMove = !canMove;
     }
 }

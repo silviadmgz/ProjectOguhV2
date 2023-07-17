@@ -45,7 +45,7 @@ public class CrashDetector : MonoBehaviour
 
     void PlaneHasCrashed()
     {
-        playerScript.DisableControllers();
+        playerScript.UpdateControllers();
         crashExplosion.Play();
         GetComponent<AudioSource>().PlayOneShot(crashSFX);
         crashFunctionCalled = true;
