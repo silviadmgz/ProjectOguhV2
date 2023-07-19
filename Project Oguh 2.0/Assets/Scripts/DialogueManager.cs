@@ -9,15 +9,19 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI dialogueText;
     public Image avatar;
+    public AudioClip audioClip;
     Player playerScript;
     
     public Animator animator;
 
     private Queue<string> messages;
+    private Queue<AudioClip> recordings;
+    
 
     void Start()
     {
         messages = new Queue<string>();
+        recordings = new Queue<AudioClip>();
         playerScript = FindObjectOfType<Player>();
     }
 
@@ -29,11 +33,16 @@ public class DialogueManager : MonoBehaviour
         nameText.text = dialogue.name;
         avatar.sprite = dialogue.image;
 
+        recordings.Clear();
         messages.Clear();
 
         foreach (string message in dialogue.messages)
         {
-            messages.Enqueue(message);
+            foreach (AudioClip recording in dialogue.audioClips)
+            {
+                messages.Enqueue(message);
+                recordings.Enqueue(recording);
+            }
         }
 
         DisplayNextMessage();

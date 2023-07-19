@@ -12,5 +12,5 @@ public class Dialogue
 
     public Sprite image;
 
-    public AudioClip audioClip;
+    public AudioClip[] audioClips;
 }
