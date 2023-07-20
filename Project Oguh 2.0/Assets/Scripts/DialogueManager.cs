@@ -45,9 +45,6 @@ public class DialogueManager : MonoBehaviour
         foreach (AudioClip recording in dialogue.audioClips)
         {
             recordings.Enqueue(recording);
-            audioSource.clip = recording;
-            audioSource.Play();
-            Debug.Log("Recording");
         }
 
         DisplayNextMessage();
@@ -61,14 +58,24 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextMessage()
     {
-        if (messages.Count == 0)
+        if (messages.Count == 0 || recordings.Count == 0)
         {
             EndDialogue();
             return;
         }
+
         string message = messages.Dequeue();
+        AudioClip recording = recordings.Dequeue();
         StopAllCoroutines();
         StartCoroutine(TypeMessage(message));
+        StartCoroutine(PlayNextAudio(recording));
+    }
+
+    IEnumerator PlayNextAudio(AudioClip recording)
+    {
+        audioSource.clip = recording;
+        audioSource.Play();
+        yield return null;
     }
 
     IEnumerator TypeMessage (string message)

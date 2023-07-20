@@ -1659,9 +1659,11 @@ MonoBehaviour:
     name: Silvia
     messages:
     - Hola mi paa!
+    - Probando
     image: {fileID: 21300000, guid: b9c35df671b663c439d5e5f4d9c26964, type: 3}
     audioClips:
-    - {fileID: 8300000, guid: d845b3cd5c1153a4ab8fb0ed82ab22c9, type: 3}
+    - {fileID: 8300000, guid: 69948928382dd7142a335364d82a1bdb, type: 3}
+    - {fileID: 8300000, guid: 2bfb1ecf1c50e0e45b78ed4ee86ae94e, type: 3}
 --- !u!61 &1129468362
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2045,7 +2047,6 @@ MonoBehaviour:
   nameText: {fileID: 1141330723}
   dialogueText: {fileID: 89531277}
   avatar: {fileID: 1240711181}
-  audioClip: {fileID: 0}
   audioSource: {fileID: 767817514}
   animator: {fileID: 508126079}
 --- !u!4 &1489367696
