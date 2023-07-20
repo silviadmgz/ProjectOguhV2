@@ -9,7 +9,8 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI dialogueText;
     public Image avatar;
-    public AudioClip audioClip;
+    // public AudioClip audioClip;
+    public AudioSource audioSource;
     Player playerScript;
     
     public Animator animator;
@@ -33,16 +34,19 @@ public class DialogueManager : MonoBehaviour
         nameText.text = dialogue.name;
         avatar.sprite = dialogue.image;
 
-        recordings.Clear();
         messages.Clear();
+        // recordings.Clear();
 
         foreach (string message in dialogue.messages)
         {
-            foreach (AudioClip recording in dialogue.audioClips)
-            {
-                messages.Enqueue(message);
-                recordings.Enqueue(recording);
-            }
+            messages.Enqueue(message);
+        }
+        
+        foreach (AudioClip recording in dialogue.audioClips)
+        {
+            recordings.Enqueue(recording);
+            audioSource.PlayOneShot(recording);
+            Debug.Log("Recording");
         }
 
         DisplayNextMessage();

@@ -2046,6 +2046,7 @@ MonoBehaviour:
   dialogueText: {fileID: 89531277}
   avatar: {fileID: 1240711181}
   audioClip: {fileID: 0}
+  audioSource: {fileID: 767817514}
   animator: {fileID: 508126079}
 --- !u!4 &1489367696
 Transform:
