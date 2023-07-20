@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -59,22 +60,19 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
-
         StopAllCoroutines();
 
-        try
+        if(recordings.Count != 0)
         {
             AudioClip recording = recordings.Dequeue();
             StartCoroutine(PlayAudio(recording));
         }
-        catch { }
 
-        try
+        if (messages.Count != 0)
         {
             string message = messages.Dequeue();
             StartCoroutine(TypeMessage(message));
         }
-        catch { }
     }
 
     IEnumerator PlayAudio(AudioClip recording)
