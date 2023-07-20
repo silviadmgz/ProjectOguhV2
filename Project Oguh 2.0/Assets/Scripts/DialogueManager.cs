@@ -37,6 +37,7 @@ public class DialogueManager : MonoBehaviour
         messages.Clear();
         recordings.Clear();
 
+        // Can these be merged?
         foreach (string message in dialogue.messages)
         {
             messages.Enqueue(message);
@@ -48,30 +49,35 @@ public class DialogueManager : MonoBehaviour
         }
 
         DisplayNextMessage();
-        // PlayNextRecording();
     }
-
-    // public void PlayNextRecording()
-    // {
-    //     recordings.Enqueue
-    // }
 
     public void DisplayNextMessage()
     {
-        if (messages.Count == 0 || recordings.Count == 0)
+        if (messages.Count == 0 && recordings.Count == 0)
         {
             EndDialogue();
             return;
         }
 
+        // try catch
+
+        try
+        {
+            AudioClip recording = recordings.Dequeue();
+            StartCoroutine(PlayAudio(recording));
+        }
+        catch { }
+
         string message = messages.Dequeue();
-        AudioClip recording = recordings.Dequeue();
+        // AudioClip recording = recordings.Dequeue();
+
+
         StopAllCoroutines();
         StartCoroutine(TypeMessage(message));
-        StartCoroutine(PlayNextAudio(recording));
+        // StartCoroutine(PlayAudio(recording));
     }
 
-    IEnumerator PlayNextAudio(AudioClip recording)
+    IEnumerator PlayAudio(AudioClip recording)
     {
         audioSource.clip = recording;
         audioSource.Play();
