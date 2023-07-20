@@ -10,7 +10,6 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI dialogueText;
     public Image avatar;
-    // public AudioClip audioClip;
     public AudioSource audioSource;
     Player playerScript;
     
