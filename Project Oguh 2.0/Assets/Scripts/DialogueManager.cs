@@ -59,7 +59,8 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
-        // try catch
+
+        StopAllCoroutines();
 
         try
         {
@@ -68,13 +69,12 @@ public class DialogueManager : MonoBehaviour
         }
         catch { }
 
-        string message = messages.Dequeue();
-        // AudioClip recording = recordings.Dequeue();
-
-
-        StopAllCoroutines();
-        StartCoroutine(TypeMessage(message));
-        // StartCoroutine(PlayAudio(recording));
+        try
+        {
+            string message = messages.Dequeue();
+            StartCoroutine(TypeMessage(message));
+        }
+        catch { }
     }
 
     IEnumerator PlayAudio(AudioClip recording)
