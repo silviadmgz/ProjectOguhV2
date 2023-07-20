@@ -35,7 +35,7 @@ public class DialogueManager : MonoBehaviour
         avatar.sprite = dialogue.image;
 
         messages.Clear();
-        // recordings.Clear();
+        recordings.Clear();
 
         foreach (string message in dialogue.messages)
         {
@@ -45,12 +45,19 @@ public class DialogueManager : MonoBehaviour
         foreach (AudioClip recording in dialogue.audioClips)
         {
             recordings.Enqueue(recording);
-            audioSource.PlayOneShot(recording);
+            audioSource.clip = recording;
+            audioSource.Play();
             Debug.Log("Recording");
         }
 
         DisplayNextMessage();
+        // PlayNextRecording();
     }
+
+    // public void PlayNextRecording()
+    // {
+    //     recordings.Enqueue
+    // }
 
     public void DisplayNextMessage()
     {
