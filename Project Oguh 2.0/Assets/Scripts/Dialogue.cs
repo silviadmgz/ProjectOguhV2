@@ -11,4 +11,6 @@ public class Dialogue
     public string[] messages;
 
     public Sprite image;
+
+    public AudioClip[] audioClips;
 }
