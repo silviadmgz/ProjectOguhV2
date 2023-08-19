@@ -2653,7 +2653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a5d0429802d5c348a0245a8bb0823ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadDelay: 4
+  loadDelay: 2
 --- !u!61 &379450936
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3797,7 +3797,7 @@ GameObject:
   - component: {fileID: 644807372}
   - component: {fileID: 644807371}
   m_Layer: 0
-  m_Name: dead end
+  m_Name: dead end sign
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
